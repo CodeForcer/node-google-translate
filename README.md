@@ -1,3 +1,24 @@
+# Codeforcer notes from fork  
+This is a dirty hack over the original package to fix the fact that it is broken in React due to its `request` dependency which relies on `fs`.  
+
+To fix this issue I've replaced `requests` with `axios`. However, to use it the output data for the functions need to be wrangled differently, ie the following code will print translations:  
+```
+translate(['Hello', 'Goodbye'], 'en','ar', (response) => console.log(response.error.data.data.translations));
+```
+
+At some point I might clean it up further, but my intention here is just to make the package work rather than maintain it. Currently none of the official Google packages for cloud translation work on React frontend without ejection (they all require `fs`).
+
+To install this package simply install the package like you would originally then update the google-translate line in `package.json` to:
+```
+"google-translate": "CodeForcer/node-google-translate",
+```
+
+Then run:
+```
+yarn upgrade google-translate
+```
+
+
 Google Translate API for Node
 =====================
 
